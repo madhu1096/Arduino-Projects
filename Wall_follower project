@@ -1,0 +1,79 @@
+\\ Program for robot
+long duration1,duration2, s1;
+int enA = 5;
+int in1 = 6;
+int in2 = 7;
+// motor two
+int enB = 11;
+int in3 = 9;
+int in4 = 10;
+void setup() 
+{
+Serial.begin (9600);
+pinMode(12, OUTPUT);
+pinMode(A0, INPUT);
+pinMode(enA, OUTPUT);
+pinMode(enB, OUTPUT);
+pinMode(in1, OUTPUT);
+pinMode(in2, OUTPUT);
+pinMode(in3, OUTPUT);
+pinMode(in4, OUTPUT);
+}
+void loop() 
+{
+digitalWrite(12, LOW);
+delayMicroseconds(.5);
+digitalWrite(12, HIGH);
+delayMicroseconds(1);
+digitalWrite(12, LOW);
+duration1 = pulseIn(A0, HIGH);
+s1 = duration1/58.2;
+Serial.println(s1);
+int A= analogRead(A1);
+int B= analogRead(A2);
+int C= analogRead(A3);
+int a,b,c;
+a=Serial.println(A);
+b=Serial.println(B);
+c=Serial.println(C);
+delay(1);
+if(s1>12)    // turn left
+  {
+    digitalWrite(in1, HIGH);
+    digitalWrite(in2, LOW);
+    digitalWrite(in3, HIGH);
+    digitalWrite(in4, LOW);
+    analogWrite(enA, 70);
+    analogWrite(enB, 500);
+  }
+if(s1<7)     // Turn right
+  {
+    digitalWrite(in1, HIGH);
+    digitalWrite(in2, LOW);
+    digitalWrite(in3, HIGH);
+    digitalWrite(in4, LOW);
+    analogWrite(enB, 70);
+    analogWrite(enA, 500);
+     
+  }
+if((s1>7)&&(s1<12))     // Forward
+  {
+    digitalWrite(in1, HIGH);
+    digitalWrite(in2, LOW);
+    digitalWrite(in3, HIGH);
+    digitalWrite(in4, LOW);
+    analogWrite(enB, 500);
+    analogWrite(enA, 500);
+     
+  }
+  
+if((A<200)||(B<200)||(C<200))    // turn right
+  {
+    digitalWrite(in1, HIGH);
+    digitalWrite(in2, LOW);
+    digitalWrite(in3, LOW);
+    digitalWrite(in4, HIGH);
+    analogWrite(enA, 500);
+    analogWrite(enB, 500);
+  }
+}
