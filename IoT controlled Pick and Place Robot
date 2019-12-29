@@ -1,0 +1,362 @@
+Refer Project report for more details
+######################################################################################################################
+ #define BLYNK_PRINT Serial    
+#include <ESP8266WiFi.h>
+#include <BlynkSimpleEsp8266.h>
+// You should get Auth Token in the Blynk App.
+// Go to the Project Settings (nut icon).
+char auth[] = "387534fe2c064d15929af879b71dd90e";
+// Your WiFi credentials.
+// Set password to "" for open networks.
+char ssid[] = "madhu";
+char pass[] = "*******************";
+void setup()
+{
+  Serial.begin(9600);
+  Blynk.begin(auth, ssid, pass);
+}
+void loop()
+{
+  Blynk.run();
+}
+
+########################################################################################################################3
+#include <LiquidCrystal.h>
+const int rs = 30, en = 31, d4 = 32, d5 =33, d6 = 34, d7 = 35;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+void setup() 
+{
+  pinMode(2,OUTPUT);
+  pinMode(12,OUTPUT);
+  pinMode(11,OUTPUT);
+  pinMode(10,OUTPUT);
+  pinMode(9,OUTPUT);
+  pinMode(4,OUTPUT);
+  pinMode(5,OUTPUT);
+  pinMode(6,OUTPUT);
+  pinMode(7,OUTPUT);
+  pinMode(22,OUTPUT);
+  pinMode(23,OUTPUT);
+  pinMode(24,OUTPUT);
+  pinMode(25,OUTPUT);
+  pinMode(26,OUTPUT);
+  pinMode(27,OUTPUT);
+  pinMode(28,OUTPUT);
+  pinMode(29,OUTPUT);
+  pinMode(38,OUTPUT);
+  pinMode(39,OUTPUT);
+  pinMode(40,OUTPUT);
+  pinMode(41,OUTPUT);
+  Serial.begin(9600);
+  lcd.begin(16, 2);
+  lcd.print("Welcome-Madhu'_'");
+}
+void loop()
+ {
+  int a,b,c,d,e,f,g,h,i,j,k;
+ int sensorValue = analogRead(A0);
+ int sensorValue1 = analogRead(A1);
+ int sensorValue2 = analogRead(A2);
+ int sensorValue3 = analogRead(A3);
+ int sensorValue4 = analogRead(A4);
+ int sensorValue5 = analogRead(A5);
+ int sensorValue6 = analogRead(A6);
+ int sensorValue7 = analogRead(A7);
+ int sensorValue8 = analogRead(A8);
+ int sensorValue9 = analogRead(A9); 
+ int sensorValue10 = analogRead(A10); 
+ Serial.println(sensorValue);
+ Serial.println(sensorValue1);
+ Serial.println(sensorValue2);
+ Serial.println(sensorValue3);
+ Serial.println(sensorValue4);
+ Serial.println(sensorValue5);
+ Serial.println(sensorValue6);
+ Serial.println(sensorValue7);
+ Serial.println(sensorValue8);
+ Serial.println(sensorValue9);
+ Serial.println(sensorValue10);
+ delay(1);     
+a=sensorValue;
+b=sensorValue1;
+c=sensorValue2;
+d=sensorValue3;
+e=sensorValue4;
+f=sensorValue5;
+g=sensorValue6;
+h=sensorValue7;
+k=sensorValue8;
+j=sensorValue9;
+i=sensorValue10;
+  digitalWrite(12,HIGH);
+  digitalWrite(11,HIGH);
+  digitalWrite(10,HIGH);
+  digitalWrite(9,HIGH);
+  digitalWrite(4,HIGH);
+  digitalWrite(5,HIGH);
+  digitalWrite(6,HIGH);
+  digitalWrite(7,HIGH);
+  digitalWrite(22,HIGH);
+  digitalWrite(23,HIGH);
+  digitalWrite(24,HIGH);
+  digitalWrite(25,HIGH);
+  digitalWrite(26,HIGH);
+  digitalWrite(27,HIGH);
+  digitalWrite(28,HIGH);
+  digitalWrite(29,HIGH);
+
+if(k<100)
+{
+   lcd.setCursor(0, 1);
+   lcd.print("READY..............."); 
+ }
+if(k<100&&h<100)
+{
+ lcd.setCursor(0, 1);
+ lcd.print("Gripper..............."); 
+}
+if(k>100)
+{
+lcd.begin(16, 2);
+ lcd.print("Welcome-Madhu'_'");
+ lcd.setCursor(0, 1);
+ lcd.print("Press key..............."); 
+}
+if(a<100&&k<100) //RIGHT TURN
+{
+  digitalWrite(12,LOW);   digitalWrite(4,HIGH);
+  digitalWrite(11,LOW);   digitalWrite(5,HIGH);
+  digitalWrite(10,HIGH);    digitalWrite(6,LOW);
+  digitalWrite(9,HIGH);     digitalWrite(7,LOW);
+  digitalWrite(22,HIGH);
+  digitalWrite(23,HIGH);
+  digitalWrite(24,HIGH);
+  digitalWrite(25,HIGH);
+  digitalWrite(26,HIGH);
+  digitalWrite(27,HIGH);
+  digitalWrite(28,HIGH);
+  digitalWrite(29,HIGH);
+ }
+if(b<100&&k<100)//LEFT
+{
+  digitalWrite(12,HIGH);     digitalWrite(4,LOW);
+  digitalWrite(11,HIGH);     digitalWrite(5,LOW);
+  digitalWrite(10,LOW);    digitalWrite(6,HIGH);
+  digitalWrite(9,LOW);     digitalWrite(7,HIGH);
+  digitalWrite(22,HIGH);
+  digitalWrite(23,HIGH);
+  digitalWrite(24,HIGH);
+  digitalWrite(25,HIGH);
+  digitalWrite(26,HIGH);
+  digitalWrite(27,HIGH);
+  digitalWrite(28,HIGH);
+  digitalWrite(29,HIGH);
+}
+if(a<100&&b<100&&k<100)//LEFT,RIGHT
+{
+  digitalWrite(12,LOW);    digitalWrite(4,LOW);
+  digitalWrite(11,LOW);    digitalWrite(5,LOW);
+  digitalWrite(10,HIGH);   digitalWrite(6,HIGH);
+  digitalWrite(9,HIGH);    digitalWrite(7,HIGH);
+   digitalWrite(22,HIGH);
+   digitalWrite(23,HIGH);
+   digitalWrite(24,HIGH);
+   digitalWrite(25,HIGH);
+   digitalWrite(26,HIGH);
+   digitalWrite(27,HIGH);
+   digitalWrite(28,HIGH);
+   digitalWrite(29,HIGH);
+  }
+if(c<100&&k<100)//REVERSE
+{
+  digitalWrite(12,HIGH);     digitalWrite(4,HIGH);
+  digitalWrite(11,HIGH);     digitalWrite(5,HIGH);
+  digitalWrite(10,LOW);    digitalWrite(6,LOW);
+  digitalWrite(9,LOW);     digitalWrite(7,LOW);
+  digitalWrite(22,HIGH);
+  digitalWrite(23,HIGH);
+  digitalWrite(24,HIGH);
+  digitalWrite(25,HIGH);
+  digitalWrite(26,HIGH);
+  digitalWrite(27,HIGH);
+  digitalWrite(28,HIGH);
+  digitalWrite(29,HIGH);
+}
+if(d<100&&k<100&&h>100)//1 MOTION down
+{
+  digitalWrite(22,LOW);     digitalWrite(26,HIGH);
+  digitalWrite(23,LOW);     digitalWrite(27,HIGH);
+  digitalWrite(24,HIGH);    digitalWrite(28,HIGH);
+  digitalWrite(25,HIGH);     digitalWrite(29,HIGH);
+  digitalWrite(4,HIGH);
+  digitalWrite(5,HIGH);
+  digitalWrite(6,HIGH);
+  digitalWrite(7,HIGH);
+  digitalWrite(12,HIGH);
+  digitalWrite(11,HIGH);
+  digitalWrite(10,HIGH);
+  digitalWrite(9,HIGH);
+  lcd.setCursor(0, 1);
+  lcd.print("Motion-DOWN.......");
+delay(5);
+digitalWrite(12,HIGH);
+  digitalWrite(11,HIGH);
+  digitalWrite(10,HIGH);
+  digitalWrite(9,HIGH);
+  digitalWrite(4,HIGH);
+  digitalWrite(5,HIGH);
+  digitalWrite(6,HIGH);
+  digitalWrite(7,HIGH);
+  digitalWrite(22,HIGH);
+  digitalWrite(23,HIGH);
+  digitalWrite(24,HIGH);
+  digitalWrite(25,HIGH);
+  digitalWrite(26,HIGH);
+  digitalWrite(27,HIGH);
+  digitalWrite(28,HIGH);
+  digitalWrite(29,HIGH);
+  digitalWrite(38,LOW);
+  digitalWrite(39,LOW);
+  digitalWrite(40,LOW);
+  digitalWrite(41,LOW);
+ delay(100);
+ lcd.setCursor(0, 1);
+  lcd.print("..............");
+}
+if(e<100&&k<100&&h>100)//1 MOTION-upp
+{
+  digitalWrite(22,HIGH);     digitalWrite(26,HIGH);
+  digitalWrite(23,HIGH);     digitalWrite(27,HIGH);
+  digitalWrite(24,LOW);    digitalWrite(28,HIGH);
+  digitalWrite(25,LOW);     digitalWrite(29,HIGH);
+  digitalWrite(4,HIGH);
+  digitalWrite(5,HIGH);
+  digitalWrite(6,HIGH);
+  digitalWrite(7,HIGH);
+  digitalWrite(12,HIGH);
+  digitalWrite(11,HIGH);
+  digitalWrite(10,HIGH);
+  digitalWrite(9,HIGH);
+   lcd.setCursor(0, 1);
+  lcd.print("Motion-UPP.......");
+delay(7);
+digitalWrite(12,HIGH);
+  digitalWrite(11,HIGH);
+  digitalWrite(10,HIGH);
+  digitalWrite(9,HIGH);
+  digitalWrite(4,HIGH);
+  digitalWrite(5,HIGH);
+  digitalWrite(6,HIGH);
+  digitalWrite(7,HIGH);
+  digitalWrite(22,HIGH);
+  digitalWrite(23,HIGH);
+  digitalWrite(24,HIGH);
+  digitalWrite(25,HIGH);
+  digitalWrite(26,HIGH);
+  digitalWrite(27,HIGH);
+  digitalWrite(28,HIGH);
+  digitalWrite(29,HIGH);
+delay(70);
+ 
+ lcd.setCursor(0, 1);
+  lcd.print("..............");
+}
+if(f<100&&k<100&&h>100)//2 MOTION-front
+{
+  digitalWrite(22,HIGH);     digitalWrite(26,LOW);
+  digitalWrite(23,HIGH);     digitalWrite(27,LOW);
+  digitalWrite(24,HIGH);    digitalWrite(28,HIGH);
+  digitalWrite(25,HIGH);     digitalWrite(29,HIGH);
+  digitalWrite(4,HIGH);
+  digitalWrite(5,HIGH);
+  digitalWrite(6,HIGH);
+  digitalWrite(7,HIGH);
+  digitalWrite(12,HIGH);
+  digitalWrite(11,HIGH);
+  digitalWrite(10,HIGH);
+  digitalWrite(9,HIGH);
+lcd.setCursor(0, 1);
+  lcd.print("Motion-FRONT.......");
+delay(10);
+digitalWrite(12,HIGH);
+  digitalWrite(11,HIGH);
+  digitalWrite(10,HIGH);
+  digitalWrite(9,HIGH);
+  digitalWrite(4,HIGH);
+  digitalWrite(5,HIGH);
+  digitalWrite(6,HIGH);
+  digitalWrite(7,HIGH);
+  digitalWrite(22,HIGH);
+  digitalWrite(23,HIGH);
+  digitalWrite(24,HIGH);
+  digitalWrite(25,HIGH);
+  digitalWrite(26,HIGH);
+  digitalWrite(27,HIGH);
+  digitalWrite(28,HIGH);
+ digitalWrite(29,HIGH);
+ delay(70);
+ lcd.setCursor(0, 1);
+  lcd.print(" ..............");
+}
+if(g<100&&k<100&&h>100)//2 MOTION-back
+{
+  digitalWrite(22,HIGH);     digitalWrite(26,HIGH);
+  digitalWrite(23,HIGH);     digitalWrite(27,HIGH);
+  digitalWrite(24,HIGH);    digitalWrite(28,LOW);
+  digitalWrite(25,HIGH);     digitalWrite(29,LOW);
+  digitalWrite(4,HIGH);
+  digitalWrite(5,HIGH);
+  digitalWrite(6,HIGH);
+  digitalWrite(7,HIGH);
+  digitalWrite(12,HIGH);
+  digitalWrite(11,HIGH);
+  digitalWrite(10,HIGH);
+  digitalWrite(9,HIGH);
+ lcd.setCursor(0, 1);
+  lcd.print("Motion-BACK.......");
+ delay(15);
+ digitalWrite(12,HIGH);
+  digitalWrite(11,HIGH);
+  digitalWrite(10,HIGH);
+  digitalWrite(9,HIGH);
+  digitalWrite(4,HIGH);
+  digitalWrite(5,HIGH);
+  digitalWrite(6,HIGH);
+  digitalWrite(7,HIGH);
+  digitalWrite(22,HIGH);
+  digitalWrite(23,HIGH);
+  digitalWrite(24,HIGH);
+  digitalWrite(25,HIGH);
+  digitalWrite(26,HIGH);
+  digitalWrite(27,HIGH);
+  digitalWrite(28,HIGH);
+  digitalWrite(29,HIGH);
+ delay(50);
+ lcd.setCursor(0, 1);
+  lcd.print("..............");
+}
+ if(f<100&&k<100&&h<100)//2 MOTION-front
+ {
+   digitalWrite(38,HIGH);
+   delay(100);
+   digitalWrite(38,LOW);
+ }
+ if(g<100&&k<100&&h<100)//2 MOTION-back
+ {
+  digitalWrite(39,HIGH);
+   delay(100);
+   digitalWrite(39,LOW);
+ }
+ if(e<100&&k<100&&h<100)//1 MOTION-down
+ {
+  digitalWrite(41,HIGH);
+   delay(100);
+   digitalWrite(41,LOW);
+ }
+ if(d<100&&k<100&&h<100)//1 MOTION upp
+{
+digitalWrite(40,HIGH);
+ delay(100);
+ digitalWrite(40,LOW);
+}
+}//exits
